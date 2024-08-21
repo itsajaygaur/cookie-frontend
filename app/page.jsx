@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation";
+import { setToken } from "./actions";
 
 
 export default function Home() {
@@ -16,8 +17,8 @@ export default function Home() {
       });
       const data = await response.json();
       console.log(data);
-      if(data.success){
-        router.push("/dashboard");
+      if (data.success) {
+        setToken(data.data);
       }
       
     } catch (error) {
