@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 import { setToken } from "./actions";
-
+import Cookies from "js-cookie";
 
 export default function Home() {
   const router = useRouter();
@@ -18,7 +18,8 @@ export default function Home() {
       const data = await response.json();
       console.log(data);
       if (data.success) {
-        setToken(data.data);
+        // setToken(data.data);
+        Cookies.set('token', data.data, {secure: true})
       }
       
     } catch (error) {

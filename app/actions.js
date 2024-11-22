@@ -10,3 +10,7 @@ export async function setToken(token) {
     })
     redirect('/dashboard')
 }
+
+export async function getToken(){
+    return cookies().get('token')?.value
+}

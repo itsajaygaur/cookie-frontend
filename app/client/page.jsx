@@ -1,6 +1,7 @@
 // import { cookies } from "next/headers";
 "use client"
 import { useEffect, useState } from "react";
+import { getToken } from "../actions";
 
 
 
@@ -28,6 +29,7 @@ async function getData() {
 
 useEffect(() => {
     getData()
+    getToken().then(c => console.log(c))
 }, [])
 
 
