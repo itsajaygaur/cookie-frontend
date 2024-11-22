@@ -1,7 +1,6 @@
 // import { cookies } from "next/headers";
 "use client"
 import { useEffect, useState } from "react";
-import { getToken } from "../actions";
 import { useToken } from "../token-provider";
 
 
@@ -14,11 +13,10 @@ const {token} = useToken()
 async function getData() {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/profile`, {
-            // headers: {
-            //     Cookie: `token=${token}`,
-            //     // 'x-data': 'wow'
-            // },
-            credentials: 'include'
+            headers: {
+                // 'Cookie': `token=${token}`,
+                'Authorization': 'Bearer ' + token
+            },
         });
         const data = await response.json();
         console.log('received response',data)

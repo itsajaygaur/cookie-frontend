@@ -6,7 +6,8 @@ async function getData() {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/profile`, {
             // credentials: "include",
             headers: {
-                Cookie: `token=${cookies().get('token').value}`,
+                // Cookie: `token=${cookies().get('token').value}`,
+                'Authorization': 'Bearer ' + cookies().get('token').value
             },
         });
         const data = await response.json();
