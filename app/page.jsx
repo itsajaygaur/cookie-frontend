@@ -18,8 +18,8 @@ export default function Home() {
       const data = await response.json();
       console.log(data);
       if (data.success) {
-        // setToken(data.data);
-        Cookies.set('token', data.data, {secure: true})
+        setToken(data.data);
+        // Cookies.set('token', data.data, {secure: true})
       }
       
     } catch (error) {
